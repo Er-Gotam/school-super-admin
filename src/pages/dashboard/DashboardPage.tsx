@@ -45,7 +45,7 @@ export function DashboardPage() {
   const { data, isLoading, isError, error, refetch, isFetching } = useDashboard();
   const logout = () => { localStorage.removeItem("super_admin_token"); navigate("/login", { replace:true }); };
   return <Box sx={{ minHeight:"100vh", bgcolor:"background.default" }}>
-    <AppBar position="sticky" elevation={0}><Toolbar><Typography variant="h6" fontWeight={700} sx={{ flexGrow:1 }}>School Super Admin</Typography><Typography variant="body2" sx={{ mr:2, display:{xs:"none",sm:"block"} }}>Platform Overview</Typography><Button color="inherit" onClick={logout}>Logout</Button></Toolbar></AppBar>
+    <AppBar position="sticky" elevation={0}><Toolbar><Typography variant="h6" fontWeight={700} sx={{ flexGrow:1 }}>School Super Admin</Typography><Button color="inherit" onClick={() => navigate("/schools")} sx={{ mr: 1 }}>Schools</Button><Typography variant="body2" sx={{ mr:2, display:{xs:"none",sm:"block"} }}>Platform Overview</Typography><Button color="inherit" onClick={logout}>Logout</Button></Toolbar></AppBar>
     <Box sx={{ p:{xs:2,md:4}, maxWidth:1440, mx:"auto" }}>
       <Stack direction={{xs:"column",sm:"row"}} justifyContent="space-between" alignItems={{xs:"flex-start",sm:"center"}} mb={3} gap={2}><Box><Typography variant="h4" fontWeight={800}>Dashboard</Typography><Typography color="text.secondary">Platform health and subscription overview</Typography></Box>{isFetching && !isLoading && <CircularProgress size={22} />}</Stack>
       {isLoading && <Box sx={{ py:10, textAlign:"center" }}><CircularProgress /><Typography color="text.secondary" mt={2}>Loading platform metrics...</Typography></Box>}
