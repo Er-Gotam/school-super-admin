@@ -6,6 +6,7 @@ import { SchoolDetailsPage } from "./pages/schools/SchoolDetailsPage";
 import { PlansPage } from "./pages/plans/PlansPage";
 import { SubscriptionsPage } from "./pages/subscriptions/SubscriptionsPage";
 import { AuditLogsPage } from "./pages/audit-logs/AuditLogsPage";
+import { ProfileSecurityPage } from "./pages/profile/ProfileSecurityPage";
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
   return localStorage.getItem("super_admin_token") ? children : <Navigate to="/login" replace />;
@@ -20,6 +21,7 @@ export default function App() {
     <Route path="/plans" element={<RequireAuth><PlansPage /></RequireAuth>} />
     <Route path="/subscriptions" element={<RequireAuth><SubscriptionsPage /></RequireAuth>} />
     <Route path="/audit-logs" element={<RequireAuth><AuditLogsPage /></RequireAuth>} />
+    <Route path="/profile" element={<RequireAuth><ProfileSecurityPage /></RequireAuth>} />
     <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>;
 }
