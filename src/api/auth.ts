@@ -16,3 +16,13 @@ export async function getMe(): Promise<MeResponse> {
   const { data } = await apiClient.get<ApiResponse<MeResponse>>("/api/v1/auth/me");
   return data.data;
 }
+
+export interface ChangePasswordRequest {
+  currentPassword: string;
+  newPassword: string;
+}
+
+export async function changePassword(request: ChangePasswordRequest): Promise<string> {
+  const { data } = await apiClient.put<ApiResponse<unknown>>("/api/v1/auth/change-password", request);
+  return data.message;
+}
